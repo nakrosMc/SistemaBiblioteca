@@ -1,0 +1,219 @@
+/* Variables de colores y fuentes */
+:root {
+    --color-primary: #2c3e50;
+    --color-secondary: #3498db;
+    --color-light: #ecf0f1;
+    --color-background: #222;
+    --color-form-bg: #ffffff0d;
+    --color-border: #666;
+    --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --border-radius: 8px;
+    --box-shadow: 0 5px 15px #0000004d;
+    --transition: all 0.3s ease;
+}
+
+/* Reset y estilos base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-primary);
+    color: var(--color-light);
+    background-color: var(--color-background);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+.main-header {
+    background-color: var(--color-primary);
+    padding: 1rem;
+    box-shadow: var(--box-shadow);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.header-logo {
+    max-width: 80px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.main-header h1 {
+    color: white;
+    font-size: 1.8rem;
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.main-nav li {
+    margin: 0 15px;
+}
+
+.main-nav a {
+    color: var(--color-light);
+    text-decoration: none;
+    font-weight: 550;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.main-nav a:hover, .main-nav a.active {
+    background-color: var(--color-secondary);
+    border-radius: var(--border-radius);
+}
+
+/* Contenido Principal */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    margin: auto;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    padding-bottom: 1.8rem;
+    background-color: var(--color-form-bg);
+    border-radius: var(--border-radius);
+}
+
+.welcome-section h2 {
+    margin-bottom: 1rem;
+    color: var(--color-secondary);
+}
+
+/* Descripción section */
+.description-section {
+    background-color: var(--color-form-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2.5rem;
+}
+
+.imagen_unexca {
+    width: 100%;
+    height: 500px;
+    border-radius: 15px;
+}
+
+.university-info, .mission-info {
+    margin-bottom: 1.5rem;
+}
+
+.university-info h3, .mission-info h3 {
+    color: var(--color-secondary);
+    margin-bottom: 0.8rem;
+}
+
+.university-info p, .mission-info p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+/* Quick actions */
+.quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.action-card {
+    background-color: var(--color-form-bg);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow);
+}
+
+.action-card h3 {
+    color: var(--color-secondary);
+    margin-bottom: 1rem;
+}
+
+.action-card p {
+    margin-bottom: 1.5rem;
+}
+
+.action-btn {
+    display: inline-block;
+    background-color: var(--color-secondary);
+    color: white;
+    text-decoration: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.action-btn:hover {
+    background-color: #1e5d86;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+}
+
+.main-footer p {
+    margin: 0.3rem 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .header-logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .quick-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .action-card {
+        width: 100%;
+    }
+}

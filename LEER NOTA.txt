@@ -1,0 +1,8 @@
+Aún hay cosas que se debe implementar, corregir o mejorar. Caso destacable a mencionar actualmente es el:
+
+    Wilfred:
+    01. Modo Claro.
+    02. Página - ¿Olvidaste la contraseña?
+    03. Página - Crear Cuenta.
+    04. Lograr hacer que en el catálogo se pueda reorganizar de forma automática y buscar documentos dentro de la misma página (Creo que eso se logra hacer con PHP debido a su estructura para hacer una página web de manera dinámica)
+    06. Enlazar con PHP y PostgreSQL

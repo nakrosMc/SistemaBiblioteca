@@ -1,0 +1,230 @@
+/* Variables de colores y fuentes*/
+:root {
+    --color-primary: #2c3e50;
+    --color-secondary: #3498db;
+    --color-light: #ecf0f1;
+    --color-background: #222;
+    --color-form-bg: #ffffff0d;
+    --color-border: #666;
+    --color-warning: #E33f;
+    --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --border-radius: 8px;
+    --box-shadow: 0 5px 15px #0000004d;
+    --transition: all 0.3s ease;
+}
+
+/* Reset y estilos base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-primary);
+    color: var(--color-light);
+    background-color: var(--color-background);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+.main-header {
+    background-color: var(--color-primary);
+    padding: 1rem;
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.header-logo {
+    max-width: 80px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.main-header h1 {
+    color: white;
+    font-size: 1.8rem;
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.main-nav li {
+    margin: 0 15px;
+}
+
+.main-nav a {
+    color: var(--color-light);
+    text-decoration: none;
+    font-weight: 550;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.main-nav a:hover, .main-nav a.active {
+    background-color: var(--color-secondary);
+    border-radius: var(--border-radius);
+}
+
+/* Contenido Principal */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    margin: auto;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    padding-bottom: 1.8rem;
+    background-color: var(--color-form-bg);
+    border-radius: var(--border-radius);
+}
+
+.welcome-section h2 {
+    margin-bottom: 1rem;
+    color: var(--color-secondary);
+}
+
+/* Descripción section */
+.books-section {
+    margin-top: 2rem;
+}
+
+.books-section h2 {
+    margin-bottom: 1.5rem;
+    color: var(--color-secondary);
+    text-align: center;
+}
+
+.filter-options {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+#search-input, #category-filter {
+    padding: 10px 15px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: #ffffff1a;
+    color: var(--color-light);
+    font-family: var(--font-primary);
+    flex: 1;
+    min-width: 200px;
+}
+
+#search-input:focus, #category-filter:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 2px #3498db4d;
+}
+
+option {
+    background-color: #111;
+}
+
+/* Tabla de libros */
+.table-container {
+    overflow-x: auto;
+}
+
+.books-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-form-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.books-table th, .books-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.books-table th {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    font-weight: 600;
+}
+
+.books-table tr:hover {
+    background-color: #ffffff0f;
+}
+
+/* Botones */
+.loan-btn {
+    background-color: var(--color-secondary);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.loan-btn:hover:not(:disabled) {
+    background-color: #1e5d86;
+}
+
+.loan-btn:disabled {
+    background-color: var(--color-warning);
+    cursor: not-allowed;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--color-primary);
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .main-nav li {
+        margin: 5px 0;
+    }
+    
+    .filter-options {
+        flex-direction: column;
+    }
+    
+    .books-table {
+        font-size: 0.9rem;
+    }
+    
+    .books-table th, .books-table td {
+        padding: 0.5rem;
+    }
+}

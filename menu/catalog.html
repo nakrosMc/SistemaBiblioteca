@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página principal - Biblioteca Central La Floresta">
+    <title>Biblioteca UNEXCA - Página Principal</title>
+    <link rel="stylesheet" href="../css/catalog_styles.css">
+    <link rel="icon" href="../static/img/icono.png" type="image/png">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <img src="../static/img/unexca_logo.png" alt="Logo UNEXCA" class="header-logo">
+            <h1>Biblioteca Central - La Floresta</h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalog.html" class="active">Catálogo</a></li>
+                <li><a href="#">Comunidad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section">
+            <h2>Catálogo</h2>
+            <p>Explora nuestro catálogo de Proyectos disponibles para referencias de investigación. Puedes filtrar por título, autor o carrera.</p>
+        </section>
+
+        <section class="books-section">
+            <h2>Proyectos Disponibles para Consulta</h2>
+            
+            <div class="filter-options">
+                <input type="text" id="search-input" placeholder="Buscar por título, autor o carrera...">
+                <select id="category-filter">
+                    <option value="">Todas las Carreras</option>
+                    <option value="Literatura">Literatura</option>
+                    <option value="Ciencias">Ciencias</option>
+                    <option value="Historia">Historia</option>
+                    <option value="Tecnología">Tecnología</option>
+                    <option value="Arte">Arte</option>
+                </select>
+            </div>
+
+            <div class="table-container">
+                <table class="books-table">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Autor</th>
+                            <th>Carrera</th>
+                            <th>Fecha</th>
+                            <th>Tutor</th>
+                            <th>Disponibilidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cien años de soledad</td>
+                            <td>Gabriel García Márquez</td>
+                            <td>Literatura</td>
+                            <td>01/02/2026</td>
+                            <td>Angel García</td>
+                            <td><button class="loan-btn">Disponible</button></td>
+                        </tr>
+                        <tr>
+                            <td>Breve historia del tiempo</td>
+                            <td>Stephen Hawking</td>
+                            <td>Ciencias</td>
+                            <td>01/02/2026</td>
+                            <td>José Caballero</td>
+                            <td><button class="loan-btn">Disponible</button></td>
+                        </tr>
+                        <tr>
+                            <td>Sapiens: De animales a dioses</td>
+                            <td>Yuval Noah Harari</td>
+                            <td>Historia</td>
+                            <td>01/02/2026</td>
+                            <td>Antoni Acosta</td>
+                            <td><button class="loan-btn" disabled>No disponible</button></td>
+                        </tr>
+                        <tr>
+                            <td>El arte de la guerra</td>
+                            <td>Sun Tzu</td>
+                            <td>Filosofía</td>
+                            <td>01/02/2026</td>
+                            <td>Angel García</td>
+                            <td><button class="loan-btn">Disponible</button></td>
+                        </tr>
+                        <tr>
+                            <td>Clean Code</td>
+                            <td>Robert C. Martin</td>
+                            <td>Tecnología</td>
+                            <td>01/02/2026</td>
+                            <td>Angel García</td>
+                            <td><button class="loan-btn">Disponible</button></td>
+                        </tr>
+                        <tr>
+                            <td>La historia del arte</td>
+                            <td>E.H. Gombrich</td>
+                            <td>Arte</td>
+                            <td>01/02/2026</td>
+                            <td>José Caballero</td>
+                            <td><button class="loan-btn">Disponible</button></td>
+                        </tr>
+                        <tr>
+                            <td>1984</td>
+                            <td>George Orwell</td>
+                            <td>Literatura</td>
+                            <td>01/02/2026</td>
+                            <td>José Caballero</td>
+                            <td><button class="loan-btn" disabled>No disponible</button></td>
+                        </tr>
+                        <tr>
+                            <td>El principito</td>
+                            <td>Antoine de Saint-Exupéry</td>
+                            <td>Literatura</td>
+                            <td>01/02/2026</td>
+                            <td>Angel García</td>
+                            <td><button class="loan-btn">Disponible</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Biblioteca Central UNEXCA - La Floresta 2025</p>
+    </footer>
+</body>
+</html>
