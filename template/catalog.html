@@ -56,70 +56,10 @@
                             <th>Disponibilidad</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <!-- AQUÍ ESTÁ EL CAMBIO 1: El cuerpo de la tabla está vacío y tiene un ID -->
+                    <tbody id="tabla-proyectos">
                         <tr>
-                            <td>Cien años de soledad</td>
-                            <td>Gabriel García Márquez</td>
-                            <td>Literatura</td>
-                            <td>01/02/2026</td>
-                            <td>Angel García</td>
-                            <td><button class="loan-btn">Disponible</button></td>
-                        </tr>
-                        <tr>
-                            <td>Breve historia del tiempo</td>
-                            <td>Stephen Hawking</td>
-                            <td>Ciencias</td>
-                            <td>01/02/2026</td>
-                            <td>José Caballero</td>
-                            <td><button class="loan-btn">Disponible</button></td>
-                        </tr>
-                        <tr>
-                            <td>Sapiens: De animales a dioses</td>
-                            <td>Yuval Noah Harari</td>
-                            <td>Historia</td>
-                            <td>01/02/2026</td>
-                            <td>Antoni Acosta</td>
-                            <td><button class="loan-btn" disabled>No disponible</button></td>
-                        </tr>
-                        <tr>
-                            <td>El arte de la guerra</td>
-                            <td>Sun Tzu</td>
-                            <td>Filosofía</td>
-                            <td>01/02/2026</td>
-                            <td>Angel García</td>
-                            <td><button class="loan-btn">Disponible</button></td>
-                        </tr>
-                        <tr>
-                            <td>Clean Code</td>
-                            <td>Robert C. Martin</td>
-                            <td>Tecnología</td>
-                            <td>01/02/2026</td>
-                            <td>Angel García</td>
-                            <td><button class="loan-btn">Disponible</button></td>
-                        </tr>
-                        <tr>
-                            <td>La historia del arte</td>
-                            <td>E.H. Gombrich</td>
-                            <td>Arte</td>
-                            <td>01/02/2026</td>
-                            <td>José Caballero</td>
-                            <td><button class="loan-btn">Disponible</button></td>
-                        </tr>
-                        <tr>
-                            <td>1984</td>
-                            <td>George Orwell</td>
-                            <td>Literatura</td>
-                            <td>01/02/2026</td>
-                            <td>José Caballero</td>
-                            <td><button class="loan-btn" disabled>No disponible</button></td>
-                        </tr>
-                        <tr>
-                            <td>El principito</td>
-                            <td>Antoine de Saint-Exupéry</td>
-                            <td>Literatura</td>
-                            <td>01/02/2026</td>
-                            <td>Angel García</td>
-                            <td><button class="loan-btn">Disponible</button></td>
+                            <td colspan="6" style="text-align: center;">Cargando datos...</td>
                         </tr>
                     </tbody>
                 </table>
@@ -130,5 +70,72 @@
     <footer class="main-footer">
         <p>Biblioteca Central UNEXCA - La Floresta 2025</p>
     </footer>
+
+    <!-- AQUÍ ESTÁ EL CAMBIO 2: El Script que conecta con Flask -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL de tu API en Flask
+            const apiUrl = 'http://127.0.0.1:5000/api/proyectos';
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error en la red o servidor no encontrado');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const tbody = document.getElementById('tabla-proyectos');
+                    tbody.innerHTML = ''; // Limpiar el mensaje de "Cargando..."
+
+                    if (data.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">No se encontraron proyectos.</td></tr>';
+                        return;
+                    }
+
+                    // Recorrer los datos que vienen de la Base de Datos
+                    data.forEach(proyecto => {
+                        // Lógica para saber si el botón debe estar deshabilitado
+                        // Asumimos que "disponibilidad" viene como true/false desde Postgres
+                        const estaDisponible = proyecto.disponibilidad; 
+                        const textoBoton = estaDisponible ? 'Disponible' : 'No disponible';
+                        const atributoDisabled = estaDisponible ? '' : 'disabled';
+
+                        // Formatear la fecha para que se vea bonita (DD/MM/YYYY)
+                        let fechaFormateada = proyecto.fecha;
+                        try {
+                            const fechaObj = new Date(proyecto.fecha);
+                            fechaFormateada = fechaObj.toLocaleDateString('es-ES');
+                        } catch (e) {
+                            console.log("Error formateando fecha", e);
+                        }
+
+                        // Crear la fila HTML
+                        const fila = `
+                            <tr>
+                                <td>${proyecto.titulo}</td>
+                                <td>${proyecto.autor}</td>
+                                <td>${proyecto.carrera}</td>
+                                <td>${fechaFormateada}</td>
+                                <td>${proyecto.tutor}</td>
+                                <td>
+                                    <button class="loan-btn" ${atributoDisabled}>
+                                        ${textoBoton}
+                                    </button>
+                                </td>
+                            </tr>
+                        `;
+                        
+                        // Agregar la fila a la tabla
+                        tbody.innerHTML += fila;
+                    });
+                })
+                .catch(error => {
+                    console.error('Hubo un problema:', error);
+                    const tbody = document.getElementById('tabla-proyectos');
+                    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #ff6b6b;">Error al cargar los datos. Asegúrate de que app.py esté ejecutándose.</td></tr>`;
+                });
+        });
+    </script>
 </body>
 </html>
